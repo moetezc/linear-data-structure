@@ -1,0 +1,42 @@
+ALGORITHM prob1sol1
+VAR
+    set1 : ARRAY_OF INTEGER[n];
+    set2 : ARRAY_OF INTEGER[m];
+    arr : ARRAY_OF INTEGER[p];
+    i,j,n,m,sum,p,k : INTEGER;
+BEGIN
+    sum:=0;
+    write("the length of the first set :");
+    read(n);
+    write("the length of second set :");
+    read(m);
+    p:= n + m;
+    FOR i FROM 0 TO n-1 STEP 1  DO
+        read(set1[i]);
+    END_FOR
+    FOR j FROM 0 TO m-1 STEP 1  DO
+        read(set2[j]);
+    END_FOR
+//ajouter les élements distincts de premier tableau au tableau des sommes
+    FOR i FROM 0 TO n-1 STEP 1  DO
+    FOR j FROM 0 TO m-1 STEP 1  DO
+        IF (set1[i] <> set2[j]) THEN
+            arr.push(set1[i]);
+        END_IF
+    END_FOR
+    END_FOR
+//ajouter les élements distincts de deuxiéme tableau au tableau des sommes
+FOR j FROM 0 TO m-1 STEP 1  DO
+    FOR i FROM 0 TO n-1 STEP 1  DO
+        IF (set2[j] <> set1[i]) THEN
+            arr.push(set2[j]);
+        END_IF
+    END_FOR
+    END_FOR
+    // faire la somme des élements du tableau qui contient les valeurs distincts des 2 tableaux
+    FOR k FROM 0 TO p-1 STEP 1  DO
+        sum := sum + arr[k];
+    END_FOR
+    Write("the sum of the distinct elements = ");
+    Write(sum);
+END
